@@ -9,6 +9,11 @@
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test": "npm run eslint"
   },
+  "keywords": [
+    "example",
+    "react",
+    "redux"
+  ],
   "devDependencies": {
     "@babel/core": "7.8.7",
     "@babel/preset-env": "7.8.7",
