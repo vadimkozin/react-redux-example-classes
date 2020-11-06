@@ -5,20 +5,15 @@ import {func, arrayOf, string} from 'prop-types';
 import PhoneForm from '../components/phone-form';
 import PhonesList from '../components/phones-list';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <PhoneForm addPhone={this.props.addPhone}/>
-        <PhonesList {...this.props} />
-      </div>
-    );
-  }
-}
+const App = (props) => {
+  const {addPhone} = props;
+  return (
+    <div>
+      <PhoneForm addPhone={addPhone}/>
+      <PhonesList {...props} />
+    </div>
+  );
+};
 
 App.propTypes = {
   addPhone: func.isRequired,
@@ -32,8 +27,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispath) => ({
   addPhone(phone) {
-    // ActionCreator.addPhone(phone)
-    //  -> {type: ActionType.ADD_PHONE, payload: phone}
     dispath(ActionCreator.addPhone(phone));
   },
   deletePhone(phone) {
@@ -42,4 +35,3 @@ const mapDispatchToProps = (dispath) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

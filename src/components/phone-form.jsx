@@ -1,33 +1,28 @@
 import React from "react";
 import {func} from 'prop-types';
 
-class PhoneForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.textInput = React.createRef();
-    this.handlerClick = this.handlerClick.bind(this);
-  }
+const PhoneForm = (props) => {
+  const {addPhone} = props;
+  const textInput = React.createRef();
 
-  handlerClick(evt) {
+  const handlerClick = (evt) => {
     evt.preventDefault();
 
-    const value = this.textInput.current.value;
+    const namePhone = textInput.current.value;
 
-    if (value !== ``) {
-      this.textInput.current.value = ``;
-      return this.props.addPhone(value);
+    if (namePhone !== ``) {
+      textInput.current.value = ``;
+      addPhone(namePhone);
     }
+  };
 
-    return false;
-  }
-
-  render() {
-    return <div>
-      <input ref={this.textInput} />
-      <button onClick = {this.handlerClick}>Добавить</button>
-    </div>;
-  }
-}
+  return (
+    <div>
+      <input ref={textInput} />
+      <button onClick = {handlerClick}>Добавить</button>
+    </div>
+  );
+};
 
 PhoneForm.propTypes = {
   addPhone: func.isRequired
