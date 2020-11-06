@@ -32,8 +32,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispath) => ({
   addPhone(phone) {
-    // ActionCreator.addPhone(phone)
-    //  -> {type: ActionType.ADD_PHONE, payload: phone}
     dispath(ActionCreator.addPhone(phone));
   },
   deletePhone(phone) {
